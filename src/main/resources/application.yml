@@ -2,3 +2,10 @@ server:
   port: 8989
   servlet:
     context-path: /ylm
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:5106/ylm?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: 123456
+    password: 123456
