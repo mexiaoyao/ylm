@@ -1,7 +1,7 @@
-package com.java.ylm;
+package com;
 
-import com.java.ylm.mapper.GradeDictMapper;
-import com.java.ylm.model.GradeDict;
+import com.mapper.GradeDictMapper;
+import com.model.GradeDict;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +20,7 @@ class YlmApplicationTests {
 
     @Test
     public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
+        System.out.println("----- selectAll method test ------");
         List<GradeDict> userList = gradeDictMapper.selectList(null);
         userList.forEach(System.out::println);
     }
