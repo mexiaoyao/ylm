@@ -17,3 +17,10 @@ logging:
         boot:
           autoconfigure:
             logging: error
+#thymeleaf
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
