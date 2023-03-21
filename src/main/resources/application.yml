@@ -2,6 +2,13 @@ server:
   port: 8989
   servlet:
     context-path: /ylm
+#thymeleaf
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
 
 spring:
   datasource:
