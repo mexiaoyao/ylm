@@ -15,8 +15,9 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public void selectList() {
-        indexService.selectList();
+    public String selectList() {
+        //indexService.selectList();
+        return "index";
     }
 
 
