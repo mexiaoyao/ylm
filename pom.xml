@@ -69,16 +69,12 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
-        <!-- jpa -->
+        <!--thymeleaf shiro 根据权限标签显示-->
+        <!--shiro与themeleaf集成-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <!-- jpa 在新建实体类时想直接序列化，遇到注解不起作用的问题，后来发现是少了一个依赖，真是无语。-->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
 

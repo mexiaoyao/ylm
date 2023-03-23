@@ -5,9 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,11 +16,8 @@ public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   //生成策略，这里配置为自增
     private Integer uid;
 
-    @Column(unique =true)
     private String userName;//帐号
 
     private String name;//名称（昵称或者真实姓名，不同系统不同定义）

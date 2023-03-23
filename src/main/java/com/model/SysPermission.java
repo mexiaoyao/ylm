@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,7 +21,6 @@ public class SysPermission implements Serializable {
 
     private String name;//名称.
 
-    @Column(columnDefinition="enum('menu','button')")
     private String resourceType;//资源类型，[menu|button]
 
     private String url;//资源路径.
