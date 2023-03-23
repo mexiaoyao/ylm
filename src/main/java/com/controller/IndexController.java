@@ -42,31 +42,35 @@ public class IndexController {
     }
 
     @GetMapping("/toLogin")
-    public String toLogin(Model model, String msg) {
-        model.addAttribute("msg", "login " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
+    public String toLogin() {
+        if(SecurityUtils.getSubject().isAuthenticated()){
+            SecurityUtils.getSubject().logout();
+        }
         return "login";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String login(String name, String pwd, Model model) {
         UsernamePasswordToken token = new UsernamePasswordToken(name, pwd);
         Subject subject = SecurityUtils.getSubject();
+        if(subject.isAuthenticated()){
+            subject.logout();
+        }
         try{
             subject.login(token);
         }catch (UnknownAccountException e){
-            e.printStackTrace();
+            log.info("账户错误");
             //账号异常
             model.addAttribute("msg","账号不正确");
             return "login";
             //登录失败，转发到登录页面
             //return "forward:tologin";
         }catch (IncorrectCredentialsException e){
-            e.printStackTrace();
+            log.info("密码错误");
             //密码异常
             model.addAttribute("msg","密码不正确");
             return "login";
         }
-
         return "forward:/";
     }
     @GetMapping("/logout")

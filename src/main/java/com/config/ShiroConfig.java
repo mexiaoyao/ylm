@@ -29,7 +29,7 @@ public class ShiroConfig {
         //filterMap.put("/add","authc");
         filterMap.put("/toLogin","anon");
         filterMap.put("/login","anon");
-        filterMap.put("/logout","anon");
+        filterMap.put("/logout","logout");
         filterMap.put("/**","authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);

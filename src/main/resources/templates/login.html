@@ -6,14 +6,14 @@
 <body>
 <span th:text="${msg}"></span>
 <div>
-    <form action="/ylm/login" method="post">
+    <form action="login" method="get">
         <input type="text" name="name">
         <br/>
         <input type="text" name="pwd">
         <input type="submit" value="提交">
     </form>
 
-    <a href="/ylm/logout">退出</a>
+    <a href="logout">退出</a>
 </div>
 </body>
 </html>
