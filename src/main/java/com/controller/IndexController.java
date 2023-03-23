@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.SimpleDateFormat;
 
@@ -46,7 +47,7 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public String login(String name, String pwd, Model model) {
         UsernamePasswordToken token = new UsernamePasswordToken(name, pwd);
         Subject subject = SecurityUtils.getSubject();

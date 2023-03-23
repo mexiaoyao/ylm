@@ -29,6 +29,9 @@ public class ShiroRealm extends AuthorizingRealm {
         //UsernamePasswordToken token subject.login 对应此操作
         UsernamePasswordToken tk = (UsernamePasswordToken) token;
         UserInfo userInfo = userService.getUser(tk.getUsername());
+        if(null==userInfo){
+            return null;
+        }
         //账户比较
         if(!userInfo.getUserName().equals(tk.getUsername())){
             return null;
