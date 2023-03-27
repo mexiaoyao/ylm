@@ -64,7 +64,7 @@ public class ShiroConfig {
 
     /**
      * 配置 ShiroDialect
-     * 数据库 方言
+     * 数据库 方言 对应前端的  功能 shiro:haspermission="add"
      * **/
     @Bean
     public ShiroDialect getShiroDialect(){
