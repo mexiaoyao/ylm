@@ -299,12 +299,14 @@ CREATE TABLE `t_user_info`  (
   `create_time` date NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   `last_time` datetime NULL DEFAULT NULL,
+  `parms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`uid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_info
 -- ----------------------------
-INSERT INTO `t_user_info` VALUES (1, 'admin', '管理员', 'd3c59d25033dbf980d29554025c23a75', '8d78869f470951332959580424d4bf4f', 0, NULL, NULL, NULL, NULL);
+INSERT INTO `t_user_info` VALUES (1, 'admin', '管理员', '456', '8d78869f470951332959580424d4bf4f', 0, NULL, NULL, NULL, NULL, 'add,update');
+INSERT INTO `t_user_info` VALUES (2, '测试员', '管理员', '123', '8d78869f470951332959580424d4bf4f', 0, NULL, NULL, NULL, NULL, 'update');
 
 SET FOREIGN_KEY_CHECKS = 1;
