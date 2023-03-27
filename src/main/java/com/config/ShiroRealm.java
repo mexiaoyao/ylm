@@ -2,11 +2,17 @@ package com.config;
 
 import com.model.UserInfo;
 import com.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShiroRealm extends AuthorizingRealm {
 
@@ -18,7 +24,17 @@ public class ShiroRealm extends AuthorizingRealm {
      * **/
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        return null;
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        //获取用户信息
+        Subject subject = SecurityUtils.getSubject();
+        UserInfo userInfo = (UserInfo)subject.getPrincipal();
+        List<String> perms = new ArrayList<String>();
+         String[] strs = userInfo.getParms().split(",");
+         for(String str : strs){
+             perms.add(str);
+         }
+        info.addStringPermissions(perms);
+        return info;
     }
 
     /**
@@ -37,6 +53,6 @@ public class ShiroRealm extends AuthorizingRealm {
             return null;
         }
         //SimpleAuthenticationInfo密码比较
-        return new SimpleAuthenticationInfo("", userInfo.getPassword(),"");
+        return new SimpleAuthenticationInfo(userInfo, userInfo.getPassword(),""); //第一个参数传递UserInfo
     }
 }

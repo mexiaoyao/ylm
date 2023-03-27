@@ -33,4 +33,6 @@ public class UserInfo implements Serializable {
 
     @TableField(exist = false)
     private List<SysRole> roleList;// 一个用户具有多个角色
+
+    private String parms;
 }

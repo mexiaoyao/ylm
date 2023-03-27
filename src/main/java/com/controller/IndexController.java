@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.SimpleDateFormat;
 
@@ -82,6 +81,12 @@ public class IndexController {
         return "redirect:/toLogin";
         //登录失败，重定向到登录页面
         //return "redirect:tologin";
+    }
+
+    @GetMapping("/noAuth")
+    public String noAuth(Model model) {
+        model.addAttribute("msg", "未授权 " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
+        return "noAuth";
     }
 
 

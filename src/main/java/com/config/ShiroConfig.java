@@ -1,5 +1,6 @@
 package com.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,10 +31,13 @@ public class ShiroConfig {
         filterMap.put("/toLogin","anon");
         filterMap.put("/login","anon");
         filterMap.put("/logout","logout");
-        filterMap.put("/**","authc");
+        filterMap.put("/add","perms[add]"); //授权范例
+        filterMap.put("/update","perms[update]"); //授权范例
+        filterMap.put("/**","authc"); //此行需要放置在最后
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
-        shiroFilterFactoryBean.setLoginUrl("/toLogin");
+        shiroFilterFactoryBean.setLoginUrl("/toLogin"); //未登陆时，进入此页面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/noAuth"); //未授权时，进入此页面
 
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         return shiroFilterFactoryBean;
@@ -56,5 +60,14 @@ public class ShiroConfig {
     @Bean("shiroRealm") //交给容器 是该方法的id  可以加name="shiroRealm"
     public ShiroRealm getShiroRealm(){
         return new ShiroRealm();
+    }
+
+    /**
+     * 配置 ShiroDialect
+     * 数据库 方言
+     * **/
+    @Bean
+    public ShiroDialect getShiroDialect(){
+        return new ShiroDialect();
     }
 }
